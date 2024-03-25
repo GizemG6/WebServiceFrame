@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Stream</title>
+    <script>
+        function takePhoto() {
+            fetch('/take_photo', {
+                method: 'POST'
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Fotoğraf başarıyla kaydedildi!');
+                } else {
+                    alert('Fotoğraf kaydedilirken bir hata oluştu!');
+                }
+            })
+            .catch(error => {
+                console.error('Hata:', error);
+        }
+    </script>
+</head>
+<body>
+    <h1>Live Stream</h1>
+    <img id="video_feed" src="{{ url_for('video_feed') }}" width="640" height="480">
+    <button onclick="takePhoto()">Fotoğraf Çek</button>
+</body>
+</html>
